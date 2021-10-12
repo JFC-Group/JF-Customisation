@@ -5,7 +5,7 @@
 **NOTE:  FTP username will be admin & password will be your admin password in WEB-UI (Router Configuration Page)**
 
 1. Make sure you have [**openssl**](https://wiki.openssl.org/index.php/Binaries) **installed** or else install it and **add it to environment variable PATH**.
-2. **Download** and **Extract** the **zip** of your respective firmware from [here](https://github.com/itsyourap/JioFiber-Home-Gateway/Firmwares/)
+2. **Download** and **Extract** the **zip** of your respective firmware from [here](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Firmwares/)
 3. Get **`server.key`** file from the Extracted zip at **`/pfrm2.0/etc/server.key`** and Copy it to **`Desktop/JioFiber`**.
 4. Go to Your **Router WEB-UI Page** (`http://192.168.29.1`) and Sign in as **Admin**. (The default credentials are **admin : Jiocentrum**)
 5. After you have signed in, change the URL in the address bar from `http://192.168.29.1/platform.cgi` to `http://192.168.29.1/dbglog.cgi`
