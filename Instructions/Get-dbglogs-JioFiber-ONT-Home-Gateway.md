@@ -20,5 +20,3 @@
 13. Now experiment with those files on your own.
 
 ### The system.db file contains all the configuration data including Wi-Fi passwords, TR-069 Configuration, Router WEB-UI Passwords, and a lot more....
-
-### Anyhow, the TR-069 Password (Maybe also the root password) is encrypted by a cipher which is defined in `/pfrm2.0/lib/lua/5.1/passwdSecureLib.so` . Please inform [me](https://t.me/itsyourap) if you decompile the `passwdSecureLib.so` file successfully and can make a source code out of it. It will be of great help.
