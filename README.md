@@ -9,6 +9,7 @@ This repository contains all the files and instructions to customize your JioFib
 3. [JCOW403](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Firmwares/JCOW403)
 4. [JCOW404](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Firmwares/JCOW404)
 5. [JCOW414 and JCO4032 (Hopefully Same Firmware)](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Firmwares/JCOW414)
+6. [JCOW411](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Firmwares/JCOW411)
 
 
 ### Available Instructions :-
