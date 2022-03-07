@@ -1,4 +1,4 @@
-# Enable FTP
+# Enable FTP (Does Not Work after R2.35 Update)
 
 *Disclaimer: - This is Only for educational purposes, No one is responsible for any type of damage.*
 
