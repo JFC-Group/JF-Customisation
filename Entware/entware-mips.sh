@@ -30,4 +30,4 @@ echo '127.0.0.1  localhost' > $CHROOT_DIR/etc/hosts
 
 echo "Done! Chroot in with"
 echo "PATH=/bin:/sbin $CHROOT_DIR/bin/busybox chroot $CHROOT_DIR /bin/sh"
-echo "Run wget http://bin.entware.net/mipselsf-k3.4/installer/generic.sh; mkdir /opt; chmod a+x generic.sh; sh generic.sh and you will be done."
+echo "Run wget http://bin.entware.net/mipselsf-k3.4/installer/generic.sh; mkdir /opt; chmod a+x generic.sh; sh generic.sh; and you will be done."
