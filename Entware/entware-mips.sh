@@ -6,7 +6,7 @@ cd /flash2/entware
 echo ""
 echo "Downloading Busybox from bin.entware.net"
 mkdir /flash2/entware/bin
-curl -o /flash2/entware/bin/busybox http://bin.entware.net/armv7sf-k3.2/installer/chroot/other/mipsel/busybox
+wget -O /flash2/entware/bin/busybox http://bin.entware.net/armv7sf-k3.2/installer/chroot/other/mipsel/busybox --no-check-certificate
 chmod a+x /flash2/entware/bin/busybox
 CHROOT_DIR=/flash2/entware
 echo ""
