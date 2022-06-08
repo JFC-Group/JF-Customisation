@@ -20,6 +20,7 @@
 
 7. Connect your router via Telnet at port 23 with `root` as user name and `password` as password.
 
-8. Use command `touch /tmp/DEBUG_IMAGE` to keep Telnet enabled. (Otherwise it will be disabled after some time).
+8. For newer firmwares, use command `rm /flash/telnetDisable` to keep Telnet enabled. (Otherwise it will be disabled after some time).
+Otherwise, on older firmwares use command `touch /tmp/DEBUG_IMAGE` to keep Telnet enabled. (Otherwise it will be disabled after some time).
 
 **Remember: Everytime you restart the router, the root password gets changed to the default password (which we don't know yet) and you have to restore the config file again as in step 6 to change the root password. Step 8 will keep your telnet enabled across router restarts.**
