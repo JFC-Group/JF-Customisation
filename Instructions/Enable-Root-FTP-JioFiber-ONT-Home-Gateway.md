@@ -7,7 +7,7 @@
 
 2. Use command `pkill vsftpd` to kill any already running FTP server on your router.
 
-3. Using `vi`, edit `/etc/vsftpd.conf` and remove all the lines and add these lines:
+3. Using `vi`, create `/flash/vsftpd.conf` and add these lines:
 
     ```
     anonymous_enable=NO
@@ -31,8 +31,10 @@
 
 4. Save the file.
 
-5. Use command `vsftpd /etc/vsftpd.conf &` to start the FTP server.
+5. Use command `vsftpd /flash/vsftpd.conf &` to start the FTP server.
 
 6. Use command `iptables -I fwInBypass -p tcp --dport 21 -m ifgroup --ifgroup-in 0x1/0x1 -j ACCEPT` to enable listening to port 21.
 
 7. Connect your router using FTP client like FileZilla using `root` as username and your root password as the password.
+
+_**P.S. : You can also make a `.sh` script in `/flash/` or `/flash2/` to automate this process.**_
