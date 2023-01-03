@@ -12,9 +12,11 @@ This repository contains all the files and instructions to customize your JioFib
 
 3. [Disable TR-069 on JioFiber ONT Home Gateway](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Disable-TR-069-JioFiber-ONT-Home-Gateway.md) *(Might not work)*
 
-4. [Get Root Access on JioFiber ONT Home Gateway](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Get-Root-Access-JioFiber-ONT-Home-Gateway.md)
+4. [Get Root Access on JioFiber ONT Home Gateway](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Get-Root-Access-JioFiber-ONT-Home-Gateway.md) *(Might not work as Jio changed the encryption key in R2.41 update! Please use [this](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Get-Any-File-From-JioFiber-ONT-Home-Gateway.md) to get the new encryption key)*
 
 5. [Enable FTP Server with `/` as FTP Root](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Enable-Root-FTP-JioFiber-ONT-Home-Gateway.md)
+
+6. [Get any file directly from your Jio Router's Filesystem to your pendrive](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Get-Any-File-From-JioFiber-ONT-Home-Gateway.md)
 
 ### Others
 
