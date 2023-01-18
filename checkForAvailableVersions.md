@@ -16,9 +16,10 @@
 3. Run it in browser developer console, to scan for available firmware versions.
 */
 
-var num = new Intl.NumberFormat("en-US", {
-    minimumFractionDigits: 2,
-});
+function precisionRound(number, precision) {
+    const factor = Math.pow(10, precision);
+    return Math.round(number * factor) / factor;
+}
 
 function checkFirmwareExists(version, url)
 {
@@ -27,7 +28,7 @@ function checkFirmwareExists(version, url)
     http.onreadystatechange = function() {
         if (this.readyState === this.DONE) {
             if (this.status !== 404){
-              console.log(`${num.format(version)} : ${url}`);
+              console.log(`${version} : ${url}`);
             }
         }
     };
@@ -45,8 +46,8 @@ async function loadFirmwares() {
   const maxVersion = 3;
 
   while (currentVersion < maxVersion) {
-    const url = `http://fota.slv.fxd.jiophone.net/ONT/${router.manufacturer}/${router.model}/${router.firmwarePrefix}${num.format(currentVersion)}.img`;
-    checkFirmwareExists(currentVersion, url);
+    const url = `http://fota.slv.fxd.jiophone.net/ONT/${router.manufacturer}/${router.model}/${router.firmwarePrefix}${precisionRound(currentVersion, 2)}.img`;
+    checkFirmwareExists(precisionRound(currentVersion, 2), url);
     currentVersion += 0.01;
   }
 }
