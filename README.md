@@ -1,6 +1,6 @@
 # JioFiber-Home-Gateway
 
-This repository contains all the files and instructions to customize your JioFiber ONT Gateway. You can grab your Gateway's firmware from [Firmwares](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Firmwares/) or you can find instructions for miscellaneous customizations from [Instructions](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Instructions/).
+This repository contains all the files and instructions to customize your JioFiber ONT Gateway. You can grab your Gateway's firmware from [Firmware](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Firmware/) or you can find instructions for miscellaneous customizations from [Instructions](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Instructions/).
 
 *Special Thanks to [yashrastogi](https://broadbandforum.co/members/yashrastogi.81002/) for getting the [OTA URL of Jio STB](https://broadbandforum.co/threads/jio-stb-jhsd200-ota-link.209956/) and [RealEng1neer](https://github.com/RealEng1neer) for arranging the ONT Firmware Links.*
 
@@ -12,7 +12,7 @@ This repository contains all the files and instructions to customize your JioFib
 
 3. [Disable TR-069 on JioFiber ONT Home Gateway](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Disable-TR-069-JioFiber-ONT-Home-Gateway.md) *(Might not work)*
 
-4. [Get Root Access on JioFiber ONT Home Gateway](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Get-Root-Access-JioFiber-ONT-Home-Gateway.md) *(Might not work as Jio changed the encryption key in R2.41 update! Please use [this](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Alternate-Way-To-Get-Root-Access-JioFiber-ONT-Home-Gateway.md) instead)*
+4. [Get Root Access on JioFiber ONT Home Gateway](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Get-Root-Access-JioFiber-ONT-Home-Gateway.md) *(Might not work as Jio changed the encryption key in R2.39 update! Please use [this](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Alternate-Way-To-Get-Root-Access-JioFiber-ONT-Home-Gateway.md) instead)*
 
 5. [Enable FTP Server with `/` as FTP Root](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Enable-Root-FTP-JioFiber-ONT-Home-Gateway.md)
 
