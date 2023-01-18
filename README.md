@@ -22,7 +22,7 @@ This repository contains all the files and instructions to customize your JioFib
 
 ### Others
 
-1. [JioFiber SIP Breakdown](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/SIP.md)
+1. [JioFiber SIP Breakdown](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Research/SIP.md)
 
 ## Disclaimer
 *This is Only for educational purposes. No one is responsible for any type of damage.*
