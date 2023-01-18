@@ -1,6 +1,6 @@
 # JioFiber-Home-Gateway
 
-This repository contains all the files and instructions to customize your JioFiber ONT Gateway. You can grab your Gateway's firmware from [Firmware](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Firmware/) or you can find instructions for miscellaneous customizations from [Instructions](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Instructions/).
+This repository contains all the files and instructions to customize your JioFiber ONT Gateway. You can grab your Gateway's firmware from [Firmware](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Router%20Firmware/) or you can find instructions for miscellaneous customizations from [Instructions](https://github.com/itsyourap/JioFiber-Home-Gateway/tree/master/Instructions/).
 
 *Special Thanks to [yashrastogi](https://broadbandforum.co/members/yashrastogi.81002/) for getting the [OTA URL of Jio STB](https://broadbandforum.co/threads/jio-stb-jhsd200-ota-link.209956/) and [RealEng1neer](https://github.com/RealEng1neer) for arranging the ONT Firmware Links.*
 
