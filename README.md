@@ -20,6 +20,7 @@ This repository contains all the files and instructions to customize your JioFib
 
 7. [Updated and Alternate Way to Get Root in JioFiber ONT Home Gateway](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Alternate-Way-To-Get-Root-Access-JioFiber-ONT-Home-Gateway.md)
 
+8. [Key Guesser for Encrypted Router Configuration file](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/keyguesser.py)
 ### Others
 
 1. [JioFiber SIP Breakdown](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Research/SIP.md)
