@@ -1,4 +1,4 @@
-# Disable TR-069 (Might not work anymore)
+# Disable TR-069 (Does not work anymore)
 
 *Disclaimer: - This is Only for educational purposes, No one is responsible for any type of damage.*
 

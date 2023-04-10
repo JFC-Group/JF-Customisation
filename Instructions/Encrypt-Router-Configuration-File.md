@@ -1,4 +1,4 @@
-# Encrypt Configuration File
+# Encrypt Configuration File (Do not use this anymore)
 
 *Disclaimer: - This is Only for educational purposes, No one is responsible for any type of damage.*
 

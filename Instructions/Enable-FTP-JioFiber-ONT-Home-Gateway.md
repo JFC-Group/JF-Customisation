@@ -1,4 +1,4 @@
-# Enable FTP (Might Not Work)
+# Enable FTP (Does not work anymore)
 
 *Disclaimer: - This is Only for educational purposes, No one is responsible for any type of damage.*
 
