@@ -1,4 +1,4 @@
-# Check Available Versions For Jio STB Firmwares
+# Check Available Versions For STB Firmwares
 
 *Disclaimer: - This is Only for educational purposes, No one is responsible for any type of damage.*
 

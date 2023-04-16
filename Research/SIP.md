@@ -1,12 +1,12 @@
-# JioFiber SIP Breakdown
+# JF SIP Breakdown
 
 **Disclaimer: - This is Only for educational purposes, No one is responsible for any type of damage.**
 
-*This is what I know so far about the SIP framework used in JioFiber router and JioJoin app to make calls.*
+*This is what I know so far about the SIP framework used in JF router and JJoin app to make calls.*
 
 ## The Story
 
-Back in 2020, before I came to know about the JioFiber firmware, the first thing I did was to sniff the network packets sent from the JioCall app to the router while registering and calling through the app for the first time. But when I turned on the sniffing app, JioCall was not detecting the router because the sniffing app was using VPN method and thus the local network was not accessible through it.
+Back in 2020, before I came to know about the JF firmware, the first thing I did was to sniff the network packets sent from the JioCall app to the router while registering and calling through the app for the first time. But when I turned on the sniffing app, JioCall was not detecting the router because the sniffing app was using VPN method and thus the local network was not accessible through it.
 
 So I turned on my laptop, installed JioCall on an Android Emulator, turned on Wireshark, and then opened JioCall. Everything was working perfectly. But the requests which the app made to the router was encrypted by self-signed certificate, so I couldn't actually sniff the packets. But I got something useful : **The ports which the SIP Server listens on, which are 8080, 8443 and 7443**.
 
@@ -16,15 +16,15 @@ Next thing I did was to decompile the JioCall apk via [jadx](https://github.com/
 {"imsi": "00000XXXXXXXXXX","msisdn": "XXXXXXXXXX","mcc": "405","mnc": "874","mode": "JFV","mac_address": "aa:bb:cc:dd:ee:ff","JTCAutoWhitelist": "true","SelfHelpONTLogs": "true","CentralizedCallBlocking": "true","CentralizedCallWaiting": "true"}
 ```
 
-Indeed, the `msisdn` key contained my JioFiber landline number. I also tried the other URL paths but none of them worked, perhaps those need an API key to work. Atleast I know that I am heading to the right path.
+Indeed, the `msisdn` key contained my JF landline number. I also tried the other URL paths but none of them worked, perhaps those need an API key to work. Atleast I know that I am heading to the right path.
 
-After an year, in October 2021, I found [this repository](https://github.com/fawazahmed0/Jio-fiber-Modem) where I found JioFiber Firmware. I downloaded the firmware quickly and started to explore its contents. I read the lua codes and came to know how the WEB-UI works and stuff. I discovered the way to [get dbglogs from JioFiber](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Get-dbglogs-JioFiber-ONT-Home-Gateway.md) and within November, I discovered the way to decrypt the router settings backup file using the Router keys.
+After an year, in October 2021, I found [this repository](https://github.com/fawazahmed0/Jio-fiber-Modem) where I found JF Firmware. I downloaded the firmware quickly and started to explore its contents. I read the lua codes and came to know how the WEB-UI works and stuff. I discovered the way to [get dbglogs from JF](https://github.com/itsyourap/JF-Home-Gateway/blob/master/Instructions/Get-dbglogs-JF-ONT-Home-Gateway.md) and within November, I discovered the way to decrypt the router settings backup file using the Router keys.
 
 Then I started looking for the VoIP server code (which is called the Juice Server) in the firmware which led me to `/pfrm2.0/etc/voipInit` which further led me to `pfrm2.0/bin/hgw-voice-app` which was, of course, a binary, that cannot be decompiled easily. So, I started dumping the strings present in the binary and I found a reference to `libims.so` library which was present in `/pfrm2.0/lib/`. Dumping the strings in the `libims.so` gave me exactly what I needed.
 
 ## Juice Server
 
-The Juice server in JioFiber is responsible for handling all the SIP communications. JioJoin app uses its API to make calls using the JioFiber VoIP Landline number.
+The Juice server in JF is responsible for handling all the SIP communications. JJoin app uses its API to make calls using the JF VoIP Landline number.
 
 **Uses Ports :** 8080, 7443, 8443, 5068 (maybe more)
 
@@ -33,14 +33,14 @@ The Juice server in JioFiber is responsible for handling all the SIP communicati
 1. `http://192.168.29.1:8080/pcap?start=1` will start recording all packets sent from/to the Juice Server until stopped.
 2. `http://192.168.29.1:8080/pcap?stop=1` will stop recording packets.
 3. `http://192.168.29.1:8080/logs` will let you download the captured packets in a pcap file along with the complete Juice Log dump (VERY USEFUL).
-4. `http://192.168.29.1:8080/request_account` will give you a JSON consisting of your JioFiber Landline Number, MCC, MNC, etc etc.
+4. `http://192.168.29.1:8080/request_account` will give you a JSON consisting of your JF Landline Number, MCC, MNC, etc etc.
 5. `http://192.168.29.1:8080/request_mac` will give you a JSON with your router's MAC address in it.
 
 There are many more, but the first three are the most important links.
 
-## How JioJoin Works
+## How JJoin Works
 
-1. First, after opening JioJoin for the first time, it will search for the host `jiofiber.local.html` with a DNS Query. If found, JioJoin will assume that you are on a JioFiber network. *(This is why using custom DNS providers stops JioJoin from working, to tackle this, you can define `jiofiber.local.html` with your router's static IP in your `hosts` file)*
+1. First, after opening JJoin for the first time, it will search for the host `jiofiber.local.html` with a DNS Query. If found, JJoin will assume that you are on a JF network. *(This is why using custom DNS providers stops JJoin from working, to tackle this, you can define `jiofiber.local.html` with your router's static IP in your `hosts` file)*
 2. After you click on the "Generate OTP" button, your phone sends an API request to the Juice Server in the router. The request is kinda like this :-
 
     ```none
@@ -51,7 +51,7 @@ There are many more, but the first three are the most important links.
 
     Let me explain the request and what it does.
 
-    The `mac_address` parameter contains a random mac address (it is not a real mac address of any device in your network, it is a random mac generated like as a session key which persists with the current JioJoin installation. It might be the real mac address in case of Jio STB).
+    The `mac_address` parameter contains a random mac address (it is not a real mac address of any device in your network, it is a random mac generated like as a session key which persists with the current JJoin installation. It might be the real mac address in case of Jio STB).
 
     The `nwk_intf` parameter represents the Network Interface used for the request, it can either be `wifi` (almost everytime) or `eth` (in case of requests from Jio STB).
 
@@ -59,7 +59,7 @@ There are many more, but the first three are the most important links.
 
     The `mac_address` and `op_type` are essential parameters in this request.
 
-    So, whenever this request is sent to the Juice Server, the Server first checks the `op_type` parameter. If it is `add` then the server has to add the device (from where the request was initiated) to SIP whitelist (devices in this list are the only devices which are permitted to send or receive SIP requests/responses). The server differentiates between clients (I mean different JioJoin apps on different devices) using the `mac_address` parameter which is unique for each JioJoin app installation. The Juice server checks if the `mac_address` is already present in the whitelisted devices list. If it is present it replies with a XML data which contains all the SIP configs which is explained later. For now let us assume that our device was not previously whitelisted. An OTP is sent to your JioFiber linked mobile number. The Juice server then responds with a **`200 OK`** status code but without any response data. But the server provides with some important response headers which are
+    So, whenever this request is sent to the Juice Server, the Server first checks the `op_type` parameter. If it is `add` then the server has to add the device (from where the request was initiated) to SIP whitelist (devices in this list are the only devices which are permitted to send or receive SIP requests/responses). The server differentiates between clients (I mean different JJoin apps on different devices) using the `mac_address` parameter which is unique for each JJoin app installation. The Juice server checks if the `mac_address` is already present in the whitelisted devices list. If it is present it replies with a XML data which contains all the SIP configs which is explained later. For now let us assume that our device was not previously whitelisted. An OTP is sent to your JF linked mobile number. The Juice server then responds with a **`200 OK`** status code but without any response data. But the server provides with some important response headers which are
 
     ```none
     Set-Cookie: WITRCSeConfigCookie=uuuuuuuu-vvvv-xxxx-yyyy-zzzzzzzzzzzz
@@ -71,9 +71,9 @@ There are many more, but the first three are the most important links.
     x-amn: +91********XX
     ```
 
-    The Cookie called `WITRCSeConfigCookie` will be needed when we want to verify the OTP with the Juice Server next while the `x-amn` header signifies the JioFiber linked mobile number to which the OTP was sent.
+    The Cookie called `WITRCSeConfigCookie` will be needed when we want to verify the OTP with the Juice Server next while the `x-amn` header signifies the JF linked mobile number to which the OTP was sent.
 
-3. JioJoin tells you that an OTP was sent to your registered mobile number `+91********XX` which is derived from the `x-amn` header from the previous step. You type the OTP and submit it. Now the request is sent to the Juice Server looks like this (assume the OTP is 696969):
+3. JJoin tells you that an OTP was sent to your registered mobile number `+91********XX` which is derived from the `x-amn` header from the previous step. You type the OTP and submit it. Now the request is sent to the Juice Server looks like this (assume the OTP is 696969):
 
     ```none
     https://jiofiber.local.html:8443/?OTP=696969
@@ -87,12 +87,12 @@ There are many more, but the first three are the most important links.
 
     which we have received from the `Set-Cookie` header from the server response in step 2.
 
-4. As soon as the OTP is verified, the Juice Server whitelists the `mac_address` associated with the request with the cookie and replies with an XML body. This XML is the SIP configuration required to make calls using JioJoin. Now, as the `mac_address` is verified, you can use it to get the XML configuration anytime using step 2. The response in step 2 will now be the XML data without any further authentication.
+4. As soon as the OTP is verified, the Juice Server whitelists the `mac_address` associated with the request with the cookie and replies with an XML body. This XML is the SIP configuration required to make calls using JJoin. Now, as the `mac_address` is verified, you can use it to get the XML configuration anytime using step 2. The response in step 2 will now be the XML data without any further authentication.
 
     The XML Configuration looks like this :
 
-    ```xml
-    <?xml version="1.0"?>
+   ```xml
+   <?xml version="1.0"?>
    <wap-provisioningdoc version="1.1">
    <characteristic type="application">
    <characteristic type="appauth">
@@ -276,25 +276,25 @@ There are many more, but the first three are the most important links.
 
     2. Under `characteristic` of type `application.lbo_p-cscf_address`:
 
-        `address` - Refers to the SIP Proxy URL which is basically the port 5068 of JioFiber
+        `address` - Refers to the SIP Proxy URL which is basically the port 5068 of JF
 
     3. Under `characteristic` of type `application.other`:
 
         `uuid_value` represents the value of `mac_address` parameter, if your `mac_address` parameter was `aa:bb:cc:dd:ee:ff` then the last section of the uuid will be `AABBCCDDEEFF`. The first sections are same for every device under every router as far as I know.
 
-## How SIP (in JioJoin and JioFiber) Works
+## How SIP (in JJoin and JF) Works
 
 *You can see the pcap yourself if you use the previously provided important links in the [Juice Server section](#juice-server).*
 
 ### REGISTER Request
 
-The REGISTER request sent by the SIP client (here, JioJoin app) looks like this:
+The REGISTER request sent by the SIP client (here, JJoin app) looks like this:
 
 ```none
 REGISTER sip:wb.wln.ims.jio.com SIP/2.0
 Via: SIP/2.0/TLS [<My IPv6 Address>]:42131;branch=z9hG4bK-642413-1---7f3f2b4d23eea124;rkeep=180
 Max-Forwards: 70
-Contact: <sip:+91XXXXXXXXXX@[<My IPv6 Address>]:42131;pn-prid=<FCM Token provided from JioJoin (This parameter is not required)>;pn-param=com.jio.jse;pn-provider=fcm;transport=tls>;+sip.instance="<00000000-0000-1000-8000-AABBCCDDEEFF>";reg-id=1;+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel";video;+g.3gpp.iari-ref="urn%3Aurn-7%3A3gpp-application.ims.iari.rcs.jio.eucr";+g.gsma.rcs.telephony="none";q=0.5
+Contact: <sip:+91XXXXXXXXXX@[<My IPv6 Address>]:42131;pn-prid=<FCM Token provided from JJoin (This parameter is not required)>;pn-param=com.jio.jse;pn-provider=fcm;transport=tls>;+sip.instance="<00000000-0000-1000-8000-AABBCCDDEEFF>";reg-id=1;+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel";video;+g.3gpp.iari-ref="urn%3Aurn-7%3A3gpp-application.ims.iari.rcs.jio.eucr";+g.gsma.rcs.telephony="none";q=0.5
 To: <sip:+91XXXXXXXXXX@wb.wln.ims.jio.com>
 From: <sip:+91XXXXXXXXXX@wb.wln.ims.jio.com>;tag=j6ska8a
 Call-ID: _idu1H_8kdsjK9sja..
@@ -314,7 +314,7 @@ Things that makes Jio's SIP protocol different from others are:
 
 1. **The Contact Header** - The contact header must have the `+sip.instance` parameter with proper value format otherwise you will get *401 Unauthorized* response from the server. The proper format of this parameter is `+sip.instance="<00000000-0000-1000-8000-AABBCCDDEEFF>"` where you have to put the value of uuid got from the XML previously.
 
-    Let me be clear, other SIP Server/Clients have their `+sip.instance` parameter format as `+sip.instance="<urn:uuid:ABCABCAB-AABB-CCDD-EEFF-AABBCCAABBCCC>"` - Note the string `urn:uuid:` is present which Jio's Juice Server does not support. (This is why using a third party SIP client like MicroSIP to call through JioFiber isn't gonna work).
+    Let me be clear, other SIP Server/Clients have their `+sip.instance` parameter format as `+sip.instance="<urn:uuid:ABCABCAB-AABB-CCDD-EEFF-AABBCCAABBCCC>"` - Note the string `urn:uuid:` is present which Jio's Juice Server does not support. (This is why using a third party SIP client like MicroSIP to call through JF isn't gonna work).
 
 2. **The P-Access-Network-Info Header** - Use it on every request.
 
@@ -363,7 +363,7 @@ After preparing our response, we need to send another REGISTER request with a fu
 REGISTER sip:wb.wln.ims.jio.com SIP/2.0
 Via: SIP/2.0/TLS [<My IPv6 Address>]:42131;branch=z9hG4bK-642413-1---7f3f2b4d23eea124;rkeep=180
 Max-Forwards: 70
-Contact: <sip:+91XXXXXXXXXX@[<My IPv6 Address>]:42131;pn-prid=<FCM Token provided from JioJoin (This parameter is not required)>;pn-param=com.jio.jse;pn-provider=fcm;transport=tls>;+sip.instance="<00000000-0000-1000-8000-AABBCCDDEEFF>";reg-id=1;+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel";video;+g.3gpp.iari-ref="urn%3Aurn-7%3A3gpp-application.ims.iari.rcs.jio.eucr";+g.gsma.rcs.telephony="none";q=0.5
+Contact: <sip:+91XXXXXXXXXX@[<My IPv6 Address>]:42131;pn-prid=<FCM Token provided from JJoin (This parameter is not required)>;pn-param=com.jio.jse;pn-provider=fcm;transport=tls>;+sip.instance="<00000000-0000-1000-8000-AABBCCDDEEFF>";reg-id=1;+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel";video;+g.3gpp.iari-ref="urn%3Aurn-7%3A3gpp-application.ims.iari.rcs.jio.eucr";+g.gsma.rcs.telephony="none";q=0.5
 To: <sip:+91XXXXXXXXXX@wb.wln.ims.jio.com>
 From: <sip:+91XXXXXXXXXX@wb.wln.ims.jio.com>;tag=j6ska8a
 Call-ID: _idu1H_8kdsjK9sja..
@@ -383,7 +383,7 @@ Now we get a *200 OK* from the server:
 SIP/2.0 200 OK
 Via: SIP/2.0/TLS [<My IPv6 Address>]:42131;branch=z9hG4bK-642413-1---7f3f2b4d23eea124;rkeep=180
 Require: outbound
-Contact: <sip:+91XXXXXXXXXX@[<My IPv6 Address>]:42131;pn-prid=<FCM Token provided from JioJoin (This parameter is not required)>;pn-param=com.jio.jse;pn-provider=fcm;transport=tls>;+sip.instance="<00000000-0000-1000-8000-AABBCCDDEEFF>";reg-id=1;video;q=0.5;expires=86399;+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel";+g.3gpp.iari-ref="urn%3Aurn-7%3A3gpp-application.ims.iari.rcs.jio.eucr";+g.gsma.rcs.telephony="none"
+Contact: <sip:+91XXXXXXXXXX@[<My IPv6 Address>]:42131;pn-prid=<FCM Token provided from JJoin (This parameter is not required)>;pn-param=com.jio.jse;pn-provider=fcm;transport=tls>;+sip.instance="<00000000-0000-1000-8000-AABBCCDDEEFF>";reg-id=1;video;q=0.5;expires=86399;+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel";+g.3gpp.iari-ref="urn%3Aurn-7%3A3gpp-application.ims.iari.rcs.jio.eucr";+g.gsma.rcs.telephony="none"
 To: <sip:+91XXXXXXXXXX@wb.wln.ims.jio.com>;tag=32ad2f2c
 From: <sip:+91XXXXXXXXXX@wb.wln.ims.jio.com>;tag=j6ska8a
 Call-ID: _idu1H_8kdsjK9sja..
@@ -402,7 +402,7 @@ Via: SIP/2.0/TLS [<My IPv6 Address>]:43696;rkeep=180;branch=z9hG4bK-<Branch>
 Max-Forwards: 70
 Contact: <sip:[<My IPv6 Address>]:43696;transport=tls>;+sip.instance="<00000000-0000-1000-8000-AABBCCDDEEFF>";reg-id=1;+g.3gpp.icsi-ref="urn:urn-7:3gpp-service.ims.icsi.mmtel";video;+g.3gpp.iari-ref="urn:urn-7:3gpp-application.ims.iari.rcs.jio.eucr";+g.gsma.rcs.telephony="none";q=0.5
 To: <sip:<Recipent Mobile Number starting with 0>@wb.wln.ims.jio.com?phone-context=wb.wln.ims.jio.com&user=phone>
-From: <sip:+91<My JioFiber Number>@wb.wln.ims.jio.com>;tag=4cwftvh2
+From: <sip:+91<My JF Number>@wb.wln.ims.jio.com>;tag=4cwftvh2
 Call-ID: <callid>@<My IPv6 Address>
 CSeq: 1 INVITE
 Session-Expires: 1800
@@ -410,8 +410,8 @@ Min-SE: 90
 Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, SUBSCRIBE, UPDATE, PRACK, INFO
 Content-Type: application/sdp
 Supported: outbound, path, gruu, replaces, timer, norefersub, 100rel
-User-Agent: JioFiberVoice/1.0
-P-Preferred-Identity: <sip:+91<My JioFiber Number>@wb.wln.ims.jio.com>
+User-Agent: JFVoice/1.0
+P-Preferred-Identity: <sip:+91<My JF Number>@wb.wln.ims.jio.com>
 P-Access-Network-Info: GPON; PSAPId=+91XXXX
 Content-Length: 675
 
@@ -447,10 +447,10 @@ When the recipient picks up the call, we get a *183 Session Progress* from the J
 
 Also you need to send ACK and PRACK requests frequently to keep the call alive. You can read any SIP documentations available on the internet for more info.
 
-Right now, I am stuck at using the RTP. In the INVITE request you can see the request data which is SDP. The `m` parameter gives us the media info which is `RTP/AVP` on port `52000`. Yes you can use any program to create RTP server on that port but the the actual RTP server will be created on the JioFiber side for further communication.The only problem is the audio codec. The audio codec used is `AMR/AMR-WB` which from Android. I don't have the time to look at the whole source code of the audio codec in android repository. You can help me out with this.
+Right now, I am stuck at using the RTP. In the INVITE request you can see the request data which is SDP. The `m` parameter gives us the media info which is `RTP/AVP` on port `52000`. Yes you can use any program to create RTP server on that port but the the actual RTP server will be created on the JF side for further communication.The only problem is the audio codec. The audio codec used is `AMR/AMR-WB` which from Android. I don't have the time to look at the whole source code of the audio codec in android repository. You can help me out with this.
 
 I have tried connecting to the RTP server in the Juice Server and I got the audio data but it was AMR-WB encoded. I tried to use some third party programs to get audible audio from the data and one seems to work : [Check this Python Program](https://github.com/Spinlogic/AMR-WB_extractor). This gives me what I need but right now idk how to play the audio in realtime and how to reverse this process so that I can send audio data for the call.
 
-If you do find a way to play the AMR/AMR-WB encoded audio in realtime and record AMR/AMR-WB audio in realtime and use the RTP server to establish communication between the caller and the callee, feel free to open a discussion in this repository.
+If you do find a way to play the AMR/AMR-WB encoded audio in realtime and record AMR/AMR-WB audio in realtime using the OpenCore AMR library (originally built for Android) in Desktop and use the RTP server to establish communication between the caller and the callee, feel free to open a discussion in this repository.
 
 Until then, this is the dead end.

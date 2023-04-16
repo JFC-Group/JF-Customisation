@@ -3,7 +3,7 @@
 # This is only for educational purposes. No one is responsible for any type of damage.
 
 __author__ = "itsyourap" 
-__url__ = "https://github.com/itsyourap/JioFiber-Home-Gateway"
+__url__ = "https://github.com/JFC-Group/JF-Customisation"
 
 """
 This script tries to guess and identify the encryption key used to encrypt 

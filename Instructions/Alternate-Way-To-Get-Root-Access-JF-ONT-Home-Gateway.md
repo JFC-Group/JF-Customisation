@@ -1,8 +1,8 @@
-# Alternate way to get root access in JioFiber ONT for newer firmwares with router specific encryption keys
+# Alternate way to get root access in JF ONT for newer firmwares with router specific encryption keys
 
 *Disclaimer: - This is Only for educational purposes, No one is responsible for any type of damage. Any wrong step might brick your router. So be aware.*
 
-1. First of all, follow [this guide](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Get-Any-File-From-JioFiber-ONT-Home-Gateway.md) to get the file at `/flash/secure/key.txt` which is the encryption key of your backup config.
+1. First of all, follow [this guide](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Get-Any-File-From-JF-ONT-Home-Gateway.md) to get the file at `/flash/secure/key.txt` which is the encryption key of your backup config.
 2. Go to your router admin page and download a backup of your router settings configuration from Administrator > Maintenance.
 3. Decrypt the config (`.enc` file) using the command `openssl aes-128-cbc -d -pass file:key.txt -in input.enc -out output.txt` (Change `input.enc` and `output.txt` respectively to your requirements).
 4. Open the decrypted config file.

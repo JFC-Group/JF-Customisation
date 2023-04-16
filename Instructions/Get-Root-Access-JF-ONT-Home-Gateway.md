@@ -2,7 +2,7 @@
 
 *Disclaimer: - This is Only for educational purposes, No one is responsible for any type of damage. Any wrong step might brick your router. So be aware.*
 
-1. First of all, follow [this guide](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Decrypt-Router-Configuration-File.md) to get the router decrypted configuration file `RSTXXXXXXX_JCXXXXX.txt`
+1. First of all, follow [this guide](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Decrypt-Router-Configuration-File.md) to get the router decrypted configuration file `RSTXXXXXXX_JCXXXXX.txt`
 
 2. Open `RSTXXXXXXX_JCXXXXX.txt` with Notepad or other Text Editor.
 
@@ -16,7 +16,7 @@
 
 5. Ensure there is no line break in the line you just pasted. The whole content should be in a single line and the line should start with `config` otherwise this isn't gonna work.
 
-6. Follow **from step 6** mentioned in [this guide](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Encrypt-Router-Configuration-File.md) to re-encrypt the configuration file and restore it via the router admin panel. (You have to skip from step 1 to 5 in that guide otherwise your router may reset or restart and you will not have root).
+6. Follow **from step 6** mentioned in [this guide](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Encrypt-Router-Configuration-File.md) to re-encrypt the configuration file and restore it via the router admin panel. (You have to skip from step 1 to 5 in that guide otherwise your router may reset or restart and you will not have root).
 
 7. Connect your router via Telnet at port 23 with `root` as user name and `password` as password.
 

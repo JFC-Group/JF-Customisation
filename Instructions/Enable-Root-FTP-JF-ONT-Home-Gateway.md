@@ -3,7 +3,7 @@
 
 *Disclaimer: - This is Only for educational purposes, No one is responsible for any type of damage. Any wrong step might brick your router. So be aware.*  
 
-1. First of all, follow [this guide](https://github.com/itsyourap/JioFiber-Home-Gateway/blob/master/Instructions/Get-Root-Access-JioFiber-ONT-Home-Gateway.md) to enable root access to your router.
+1. First of all, follow [this guide](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Get-Root-Access-JF-ONT-Home-Gateway.md) to enable root access to your router.
 
 2. Use command `pkill vsftpd` to kill any already running FTP server on your router.
 

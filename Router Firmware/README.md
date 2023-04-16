@@ -1,6 +1,6 @@
 # Instructions  
 
-1. The .img and .sig files are the original bundled Release firmware from Jio that can be flashed through the WEB-UI.
+1. The .img and .sig files are the original bundled Release firmware from JF that can be flashed through the WEB-UI.
 
 2. The extracted firmwares are in the zip files respectively.
 
