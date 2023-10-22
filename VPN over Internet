@@ -1,0 +1,9 @@
+Step 1 :- Create a VPN server (wireguard using pivpn in dietpi os in my case)
+Step 2 :- expose device over ipv6 not ipv4(cause of cgnat or pay for public ip)
+Step 3 :- connect to the VPN using OpenVPN or wireguard depending on the server installation
+
+Observation
+The main use is to connect to the home network using the VPN, you can use hotstart,aha and other services when you are overseas.
+
+The Jiocall app would register the app, or a new device can be added to everything but the jiocall(last versions after the rename) would sometimes stop working, and call can not be placed.
+Detailed analysis is required to check the tvbox and jiotv apk
