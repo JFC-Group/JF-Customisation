@@ -1,5 +1,5 @@
 Step 1 :- Create a VPN server (wireguard using pivpn in dietpi os in my case)
-Step 2 :- expose device over ipv6 not ipv4(cause of cgnat or pay for public ip)
+Step 2 :- expose device over ipv6 not ipv4(cause of cgnat or pay for public IP)  both inbound and outbound in router firewall page for ipv6
 Step 3 :- connect to the VPN using OpenVPN or wireguard depending on the server installation
 
 Any ngork/remote.it or any similar service is required to connect with headless if the ipv6 is getting updated, or a free ddns which for ipv6 is also good
