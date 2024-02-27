@@ -31,6 +31,13 @@ routerSerial = "RSXXXXXXXXXXX" # Your Router's Serial Number                    
 routerSsid = "XXXXX"  # Default Router SSID without the 'JioFiber-' prefix                                  #
 #############################################################################################################
 
+#############################################################################################################
+# All of the above information might be found written on the back of the router box.                        #
+# The router SSID does NOT mean the current SSID of your router                                             #
+# The router SSID is the DEFAULT SSID of your router, e.g., "JioFiber-Alpha"                                #
+# You have to just take the "Alpha" part in the above routerSsid variable                                   #
+#############################################################################################################
+
 def tryToDecrypt(hexKey):
     p = subprocess.Popen(["openssl", "aes-128-cbc", "-d", "-pass", "pass:{}".format(hexKey),
                          "-in", inFileName, "-out", outFileName], stderr=subprocess.PIPE, stdout=subprocess.PIPE)
