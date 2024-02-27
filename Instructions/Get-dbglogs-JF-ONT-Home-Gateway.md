@@ -10,7 +10,7 @@
 
 3. ~~Get **`server.key`** file from the Extracted zip at **`/pfrm2.0/etc/server.key`** and Copy it to **`Desktop/JF`**.~~
 
-4. ~~Grab the encryption key for your router model from [here](https://github.com/JFC-Group/JF-Customisation/tree/master/EncryptionKeys/) and Copy it to **`Desktop/JF`** as `server.key` ~~
+4. ~~Grab the encryption key for your router model from [here](https://github.com/JFC-Group/JF-Customisation/tree/master/EncryptionKeys/) and Copy it to **`Desktop/JF`** as `server.key`~~
 
 5. Go to Your **Router WEB-UI Page** (`http://192.168.29.1`) and Sign in as **Admin**. (The default credentials are **admin : Jiocentrum**)
 
