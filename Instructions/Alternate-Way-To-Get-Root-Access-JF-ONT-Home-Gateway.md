@@ -13,7 +13,7 @@
    ```
    
 6. Ensure there is no line break in the line you just pasted. The whole content should be in a single line and the line should start with `config` otherwise this isn't gonna work.
-7. Encrypt the config using the command `openssl aes-128-cbc -pass file:key.txt -in input.txt -out output.enc` (Change `input.txt` and `output.enc` respectively).
+7. Encrypt the config using the command `openssl aes-128-cbc -pass file:key.txt -in input.txt -out output.enc -iter 10000` (Change `input.txt` and `output.enc` respectively). (Where `key.txt` is a plaintext file having the encryption key only.
 8. The output file should have the same name as your actual backed up config file in step 2.
 9. Restore the new backup file in Router Admin page at Administrator > Maintenance.
 10. Done! Now Telnet into the Router and use username as `root` and password as `password`.
