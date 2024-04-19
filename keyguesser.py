@@ -66,7 +66,8 @@ def tryKey(key):
 
 keyStrings = ["1n0NaZQnC9oxcfwf", "us4AQiJAgbj0Fmxq", "NTqK8Ps5iFke8zrp", "bfqerloC15y79WQZ",
               "9gNzEbuDjtyT9Pyc", "uuphsZuO92AZW5GJ", "qdySWmmvYKdBcO53", "Q7ODauKsxUAUtbR7",
-              "Kohgiem4joochei3"]
+              "Kohgiem4joochei3", "6f1D27JyLm70GUUu", "zuFbKywMhJjVEhk3", "6uMrt5ricsD1ABDh",
+              "iPjZ8bYm6s3uGYVf", "QGwaPHx2K1rNDTmL", "fJ7OeRF2TvqKdR30"]
 
 def useCombination(keyIndex):
     x = [routerSerial, keyStrings[keyIndex], routerSsid]
