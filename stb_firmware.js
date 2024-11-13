@@ -1,15 +1,3 @@
-# Check Available Versions For STB Firmwares
-
-*Disclaimer: - This is Only for educational purposes, No one is responsible for any type of damage.*
-
-1. First go to `http://fota.slv.fxd.jiophone.net/` using your PC Browser.
-2. Open Developer Tools and Click on the Console option.
-3. At the top of the console window (just at the right of Filter box), you will find a spinner named `Custom levels`. Click it and turn off the `Error` checkbox.
-4. Copy the script below and paste into the console.
-5. In the console, edit the variables `STB.manufacturer`, `STB.model`, `currentVersion`, `maxVersion` and `increment` according to your need.
-6. Press Enter in the console which will show the STB Firmware versions along with their URLs.
-
-```js
 /*
 Example Link : http://fota.slv.fxd.jiophone.net/STB/Droidlogic/JHSD200/STB-JHSD200-7.4.6.zip
 1. Goto http://fota.slv.fxd.jiophone.net/
@@ -55,10 +43,10 @@ function incrementVersion(ver, increment) {
     const splitVer = ver.split(".");
     const splitIncrement = increment.split(".");
     let carry = 0;
-    for (let i = (splitVer.length - 1); i >= 0; i--){
+    for (let i = (splitVer.length - 1); i >= 0; i--) {
         splitVer[i] = (parseInt(splitVer[i]) + parseInt(splitIncrement[i]) + carry).toString();
         carry = 0;
-        if ((i !== 0) && splitVer[i] >= 10){
+        if ((i !== 0) && splitVer[i] >= 10) {
             carry = Math.trunc(parseInt(splitVer[i]) / 10);
             splitVer[i] = (parseInt(splitVer[i]) % 10).toString();
         }
@@ -68,4 +56,3 @@ function incrementVersion(ver, increment) {
 }
 
 loadFirmwares();
-```

@@ -1,10 +1,10 @@
 # JF-Customisation
 
-This repository contains all the files and instructions to customize your JF ONT Gateway. You can grab your Gateway's firmware from [Firmware](https://github.com/JFC-Group/JF-Customisation/tree/master/Router%20Firmware/) or you can find instructions for miscellaneous customizations from [Instructions](https://github.com/JFC-Group/JF-Customisation/tree/master/Instructions/).
+This repository contains all the files and instructions to customize your JF ONT Gateway. You can find instructions for miscellaneous customizations from [Instructions](https://github.com/JFC-Group/JF-Customisation/tree/master/Instructions/).
 
 *Special Thanks to [yashrastogi](https://broadbandforum.co/members/yashrastogi.81002/) for getting the [OTA URL of STB](https://broadbandforum.co/threads/jio-stb-jhsd200-ota-link.209956/) and [RealEng1neer](https://github.com/RealEng1neer) for arranging the ONT Firmware Links.*
 
-### Available Instructions :-
+## Available Instructions :-
 
 1. [Getting Logs (dbglogs) from JF ONT Home Gateway](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Get-dbglogs-JF-ONT-Home-Gateway.md)
 
@@ -21,9 +21,9 @@ This repository contains all the files and instructions to customize your JF ONT
 7. [Updated and Alternate Way to Get Root in JF ONT Home Gateway](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Alternate-Way-To-Get-Root-Access-JF-ONT-Home-Gateway.md)
 
 8. [Key Guesser for Encrypted Router Configuration file](https://github.com/JFC-Group/JF-Customisation/blob/master/keyguesser.py)
-### Others
 
-1. [JF SIP Breakdown](https://github.com/JFC-Group/JF-Customisation/blob/master/Research/SIP.md)
+Please also check the [discussions](https://github.com/JFC-Group/JF-Customisation/discussions).
 
 ## Disclaimer
+
 *This is Only for educational purposes. No one is responsible for any type of damage.*
