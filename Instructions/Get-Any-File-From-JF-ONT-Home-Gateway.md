@@ -14,6 +14,8 @@
 
 *The location of the the pendrive root in the router is `/mnt/vfs/admin/ITSYOURAP/` (Remember to replace `"ITSYOURAP"` with the label of your pendrive)*
 
+In newer version replace the `backupRestore.html` with `backupRestore.html` to avoid `401 Uanuthorized` Error.
+
 ## Steps:-
 
 1. Open your router admin page (`http://192.168.29.1`) and login via your admin credentials.
