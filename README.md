@@ -8,22 +8,8 @@ This repository contains all the files and instructions to customize your JF ONT
 
 *This is Only for educational purposes. No one is responsible for any type of damage.*
 
-## Available Instructions :-
+## Contents
 
-1. [Getting Logs (dbglogs) from JF ONT Home Gateway](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Get-dbglogs-JF-ONT-Home-Gateway.md)
+1. [Key Guesser for Encrypted Router Configuration file](https://github.com/JFC-Group/JF-Customisation/blob/master/keyguesser.py)
 
-2. [Enable FTP on JF ONT Home Gateway](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Enable-FTP-JF-ONT-Home-Gateway.md) *(Might not work, check 5th instruction instead)*
-
-3. [Disable TR-069 on JF ONT Home Gateway](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Disable-TR-069-JF-ONT-Home-Gateway.md) *(Might not work)*
-
-4. [Get Root Access on JF ONT Home Gateway](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Get-Root-Access-JF-ONT-Home-Gateway.md) *(Might not work as JF changed the encryption key in R2.39 update! Please use [this](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Alternate-Way-To-Get-Root-Access-JF-ONT-Home-Gateway.md) instead)*
-
-5. [Enable FTP Server with `/` as FTP Root](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Enable-Root-FTP-JF-ONT-Home-Gateway.md)
-
-6. [Get any file directly from your JF Router's Filesystem to your pendrive](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Get-Any-File-From-JF-ONT-Home-Gateway.md)
-
-7. [Updated and Alternate Way to Get Root in JF ONT Home Gateway](https://github.com/JFC-Group/JF-Customisation/blob/master/Instructions/Alternate-Way-To-Get-Root-Access-JF-ONT-Home-Gateway.md)
-
-8. [Key Guesser for Encrypted Router Configuration file](https://github.com/JFC-Group/JF-Customisation/blob/master/keyguesser.py)
-
-Please also check the [discussions](https://github.com/JFC-Group/JF-Customisation/discussions).
+**Please check the [discussions](https://github.com/JFC-Group/JF-Customisation/discussions)**
